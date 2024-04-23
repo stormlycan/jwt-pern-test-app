@@ -1,0 +1,36 @@
+# Ignore Node.js modules
+**/node_modules/
+
+# Ignore npm lock files
+**/package-lock.json
+
+# Ignore database dumps
+server/database.sql
+
+# Ignore compiled files or build directories
+client/public/
+client/build/
+server/build/
+server/dist/
+
+# Ignore any log files
+*.log
+
+# Ignore environment-specific files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Ignore any temporary files or directories
+*.tmp
+
+# Ignore IDE-specific files and directories
+.vscode/
+.idea/
+*.iml
+
+# Ignore any user-specific files or directories
+.DS_Store
+Thumbs.db
