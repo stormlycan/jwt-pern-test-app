@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -23,6 +23,32 @@ function App() {
   const setAuth = boolean  => {
     setIsAuthenticated(boolean);
   }
+
+  async function isAuth() {
+    try {
+      // console.log( {token: localStorage.token})
+      const response = await fetch("http://localhost:5000/auth/is-verify", {
+        method: "GET",
+        headers: {token: localStorage.token }
+      });
+
+      const parseRes = await response.json();
+
+      parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false)
+
+    } catch (err) {
+      console.error(err.message);
+    }
+
+  }
+
+  useEffect(() => {
+    if (localStorage.token) {
+      isAuth();
+    } else {
+      setIsAuthenticated(false);
+    }
+  })
 
   return (
     <Fragment>
